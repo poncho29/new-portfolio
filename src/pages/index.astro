@@ -1,17 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-import Badge from '../components/Badge.astro';
+import Hero from '../components/Hero.astro';
+import AboutMe from '../components/AboutMe.astro';
 import Projects from '../components/Projects.astro';
-import SocialPill from '../components/SocialPill.astro';
+import Experience from '../components/Experience.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 
-import Mail from '../icons/Mail.astro';
 import Code from '../icons/Code.astro';
-import GitHub from '../icons/GitHub.astro';
-import LinkedIn from '../icons/LinkedIn.astro';
 import BriefCase from '../icons/BriefCase.astro';
-import Experience from '../components/Experience.astro';
+import ProfileCheck from '../icons/ProfileCheck.astro';
 ---
 
 <Layout
@@ -19,40 +17,7 @@ import Experience from '../components/Experience.astro';
 	description="Desarrollador Web con más de 2 años de experiencia especializado en FrontEnd con ReactJS, NextJS y Astro."
 >
 	<main class="px-4">
-		<SectionContainer class="md:pt-44">
-			<h1
-				class="flex flex-col items-center gap-4 mb-6 text-3xl text-white text-center
-				font-bold md:flex-row md:items-center md:text-4xl lg:text-5xl"
-			>
-				Hola, soy Sebastián Meneses 
-				<a
-					href="https://www.linkedin.com/in/sebastianmeneses29/"
-					target="_blank"
-					rel="noopener"
-					class="inline-flex"
-				>
-					<Badge>Trabajemos juntos</Badge>
-				</a>
-			</h1>
-			<h2 class="text-xl text-wrap mb-6 md:text-2xl">
-				Desarrollador Web con más de 2 años de experiencia de <span class="text-yellow-200/90">Colombia.</span><br />
-				<span class="text-blue-200/90">Especializado en FrontEnd con ReactJS, NextJS y Astro.</span>
-			</h2>
-
-			<nav class="flex flex-wrap gap-4">
-				<SocialPill href="https://www.linkedin.com/in/sebastianmeneses29/">
-					<LinkedIn class="size-4 md:size-6" />
-					LinkedIn
-				<SocialPill href="https://github.com/poncho29">
-					<GitHub class="size-4 md:size-6" />
-					Github
-				</SocialPill>
-				<SocialPill href="https://github.com/poncho29">
-					<Mail class="size-4 md:size-6" />
-					meneses321@hotmail.com
-				</SocialPill>
-			</nav>
-		</SectionContainer>
+		<Hero />
 
 		<SectionContainer id="experience">
 			<h2
@@ -72,5 +37,16 @@ import Experience from '../components/Experience.astro';
 				Proyectos
 			</h2>
 			<Projects />
+		</SectionContainer>
+
+		<!-- <SectionContainer id="sobre-mi">
+      <h2
+        class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
+      >
+        <ProfileCheck class="size-8" />
+        Sobre mí
+      </h2>
+      <AboutMe />
+    </SectionContainer> -->
 	</main>
 </Layout>

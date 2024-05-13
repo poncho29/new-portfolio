@@ -9,10 +9,9 @@ const { ...props } = Astro.props
 <a
   {...props}
   target="_blank"
-  rel="noopener noreferrer" 
-  class="flex items-center justify-center gap-x-2 px-2 py-1 text-xs border
-  border-white/10 rounded-full bg-white/5 transition hover:scale-110
-  hover:bg-white/10 md:px-4 md:py-2 md:text-base"
+  rel="noopener noreferrer"
+  role="link"
+  class="inline-flex items-center justify-center gap-2 px-4 py-1 text-gray-800 transition bg-gray-100 border border-gray-300 rounded-full dark:bg-gray-800 dark:border-gray-600 dark:text-white focus-visible:ring-yellow-500/80 text-md hover:bg-gray-900 hover:border-gray-700 group max-w-fit hover:text-white focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 active:bg-black"
 >
   <slot />
 </a>

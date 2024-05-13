@@ -3,16 +3,17 @@ import ExperienceItem from "./ExperienceItem.astro";
 
   const EXPERIENCE = [
     {
-      date: "2022 - Presente",
-      title: "Desarrollador Web - AntPack",
+      title: "Desarrollador Web",
+      company: "AntPack",
       description: "Desarrollador de interfaces graficas, integración de APIs con ReactJS y NextJS.",
+      date: "2022 - Presente",
     }
   ];
 ---
 
-<ol class="relative ml-3 border-s border-gray-200 dark:border-gray-70">
+<ol class="relative mt-16">
   {EXPERIENCE.map((item) => (
-    <li class="mb-10 ms-6">
+    <li>
       <ExperienceItem {...item} />
     </li>
   ))}          

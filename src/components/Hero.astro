@@ -1,0 +1,53 @@
+---
+import Badge from "./Badge.astro";
+import SocialPill from "./SocialPill.astro";
+import SectionContainer from "./SectionContainer.astro";
+
+import GitHub from "../icons/GitHub.astro";
+import Mail from "../icons/Mail.astro";
+import LinkedIn from "../icons/LinkedIn.astro";
+---
+
+<SectionContainer class="md:pt-36">
+  <div class="flex gap-4 mb-4">
+    <img
+      class="rounded-full shadow-lg size-16"
+      src="/profile-image.webp"
+      alt="sebastian photo"
+    />
+    <a
+      href="https://www.linkedin.com/in/sebastianmeneses29/"
+      target="_blank"
+      rel="noopener"
+      class="flex items-center transition md:justify-center md:hover:scale-105"
+    >
+      <Badge>Disponible para trabajar</Badge>
+    </a>
+  </div>
+  <h1
+    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+  >
+    Hola, soy Sebastián Meneses 
+  </h1>
+  <p
+    class="text-xl text-gray-800 text-wrap my-6 dark:text-gray-300 md:text-2xl 
+    [&>strong]:font-semibold"
+  >
+    <strong class="dark:text-yellow-200">Ingeniero de Sistemas y Desarrollador Web</strong> con más de 2 años de experiencia de Colombia.
+    <strong class="dark:text-blue-300">Especializado en FrontEnd con ReactJS, NextJS y Astro.</strong>
+  </p>
+
+  <nav class="flex flex-wrap gap-4">
+    <SocialPill href="https://www.linkedin.com/in/sebastianmeneses29/">
+      <LinkedIn class="size-4 md:size-6" />
+      LinkedIn
+    <SocialPill href="https://github.com/poncho29">
+      <GitHub class="size-4 md:size-6" />
+      Github
+    </SocialPill>
+    <SocialPill href="https://github.com/poncho29">
+      <Mail class="size-4 md:size-6" />
+      Contáctame
+    </SocialPill>
+  </nav>
+</SectionContainer>

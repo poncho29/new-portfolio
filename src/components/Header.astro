@@ -1,45 +1,88 @@
 ---
-import HamburgerButton from "./HamburgerButton.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 
-const links = [
-  { href: "#top", title: "Inicio" },
-  { href: "#experience", title: "Experiencia" },
-  { href: "#projects", title: "Proyectos" },
-  { href: "#about", title: "Sobre mi" },
-  { href: "#contact", title: "Contacto" },
+const navItems  = [
+  { href: "#experience", title: "Experiencia", label: "experiencia" },
+  { href: "#projects", title: "Proyectos", label: "proyectos" },
+  { href: "#about", title: "Sobre mi", label: "sobre mi" },
+  { href: "mailto:meneses321@hotmail.com", title: "Contacto", label: "contacto" },
 ];
 ---
 
 <header
-  class="w-full max-w-[1120px] flex items-center justify-between mx-auto p-4 xl:py-5 xl:px-0"
+  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
 >
-  <img
-    src="/profile-image.webp"
-    alt="sebastian photo"
-    class="w-12 h-12 rounded-full"
-  >
-
-  <HamburgerButton />
-
   <nav
-    class="hidden absolute top-20 left-0 w-full bg-[#050505]
-    md:block md:static md:w-auto md:opacity-80 md:bg-transparent"
+    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200
+    justify-center items-center"
   >
-    <ul
-      class="flex flex-col gap-x-10 *:py-4 text-center md:flex-row"
-    >
-      {links.map(link => (
-        <li
-          class="hover:bg-white/10 md:hover:bg-transparent cursor-pointer"
+    {
+      navItems.map((link) => (
+        <a
+          href={link.href}
+          aria-label={link.label}
+          class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
         >
-          <a
-            href={link.href}
-            class="hover:bg-transparent md:hover:text-blue-200"
-          >
-            {link.title}
-          </a>
-        </li>
-      ))}
-    </ul>
+          { link.title }
+        </a>
+      ))
+    }
+    <ThemeToggle />
   </nav>
 </header>
+
+<style>
+  nav {
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+
+  @keyframes nav-shadown {
+    to {
+      @apply shadow-lg ring-1 backdrop-blur dark:bg-gray-800/90 bg-white/50 ring-white/10;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll("section")
+    const navItems = document.querySelectorAll("header nav a")
+
+    const callback = (entries: any[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("text-yellow-500")
+            } else {
+              item.classList.remove("text-yellow-500")
+            }
+          })
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    })
+
+    sections.forEach((section) => {
+      observer.observe(section)
+    })
+
+    // Cleanup function
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect()
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section)
+        })
+      }
+    }
+  })
+</script>
