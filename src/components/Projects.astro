@@ -1,0 +1,73 @@
+---
+import React from "../icons/React.astro";
+import Tailwind from "../icons/Tailwind.astro";
+
+import type { JSX } from "astro/jsx-runtime";
+
+interface Tag {
+  name: string;
+  class: string;
+  icon: JSX.Element;
+}
+
+interface Project {
+  title: string;
+  description: string;
+  link: string;
+  github: string;
+  image: string;
+  tags: Tag[];
+}
+
+const TAGS: Record<string, Tag> = {
+  REACT: {
+    name: "React",
+    class: "text-white bg-gray-800",
+    icon: React,
+  },
+  TAILWIND: {
+    name: "Tailwindcss",
+    class: "text-white bg-gray-800",
+    icon: Tailwind,
+  }
+}
+
+const PROJECTS: Project[] = [
+  {
+    title: "Portafolio de Diseñadora",
+    description: "Portafolio de Laura Martinez con responsive design.",
+    link: "https://laura-design.vercel.app/",
+    github: "https://github.com/poncho29/laura-design",
+    image: "/projects/designer-portfolio.webp",
+    tags: [TAGS.REACT, TAGS.TAILWIND],
+  }
+];
+---
+
+{PROJECTS.map(({ title, description, link, github, image, tags }) => (
+    <article>
+      <h3
+        class="text-2xl text-blue-200 font-semibold mb-2"
+      >{title}</h3>
+      <p
+        class="text-lg text-pretty mb-4"
+      >{description}</p>
+      <ul class="flex flex-row gap-x-2 mb-4">
+        {tags.map(tag => (
+          <li class="cursor-default">
+            <span
+              class={`flex gap-x-2 py-1 px-2 text-xs rounded-full ${tag.class}`}
+            >
+              <tag.icon class="size-4" />
+              {tag.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <img
+        src={image}
+        alt={`Captura de pantalla del proyecto ${title}`}
+        class="w-4/6 ml-auto rounded shadow2xl shadow-white/10"
+      />
+  </article>
+))}

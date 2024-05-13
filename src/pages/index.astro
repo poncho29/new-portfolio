@@ -2,10 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 
 import Badge from '../components/Badge.astro';
+import Projects from '../components/Projects.astro';
 import SocialPill from '../components/SocialPill.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 
 import Mail from '../icons/Mail.astro';
+import Code from '../icons/Code.astro';
 import GitHub from '../icons/GitHub.astro';
 import LinkedIn from '../icons/LinkedIn.astro';
 import BriefCase from '../icons/BriefCase.astro';
@@ -17,7 +19,7 @@ import Experience from '../components/Experience.astro';
 	description="Desarrollador Web con más de 2 años de experiencia especializado en FrontEnd con ReactJS, NextJS y Astro."
 >
 	<main class="px-4">
-		<SectionContainer class="py-20 md:pt-44 md:pb-24">
+		<SectionContainer class="md:pt-44">
 			<h1
 				class="flex flex-col items-center gap-4 mb-6 text-3xl text-white text-center
 				font-bold md:flex-row md:items-center md:text-4xl lg:text-5xl"
@@ -53,11 +55,22 @@ import Experience from '../components/Experience.astro';
 		</SectionContainer>
 
 		<SectionContainer id="experience">
-			<h2 class="flex items-center gap-x-3 text-2xl font-semibold mb-6">
+			<h2
+				class="flex items-center gap-x-3 text-xl font-semibold mb-6 md:text-2xl"
+			>
 				<BriefCase class="size-7" />
 				Experiencia laboral
 			</h2>
 			<Experience />
 		</SectionContainer>
+
+		<SectionContainer id="projects">
+			<h2
+				class="flex items-center gap-x-3 text-xl font-semibold mb-6 md:text-2xl"
+			>
+				<Code />
+				Proyectos
+			</h2>
+			<Projects />
 	</main>
 </Layout>
